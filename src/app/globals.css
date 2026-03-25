@@ -37,6 +37,20 @@ body {
   animation: marquee-scroll 15s linear infinite;
 }
 
+/* Scroll up animation for "YOU CAN DO IT" */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 8s linear infinite;
+}
+
 /* Sidebar slide-in for mobile */
 @keyframes slide-in {
   from {

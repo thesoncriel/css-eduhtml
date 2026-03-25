@@ -10,19 +10,22 @@ const levels = [
 export default function StudyPage() {
   return (
     <div className="space-y-8">
-      {/* Marquee-style header */}
-      <div className="overflow-hidden rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-border">
-        <div className="flex items-center gap-4 p-4">
-          <div className="flex-1 overflow-hidden">
-            <div className="animate-marquee whitespace-nowrap">
-              <span className="text-accent tracking-tighter text-lg">
-                ●■■■■■■●
-              </span>
-            </div>
+      {/* Header */}
+      <div className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-border p-6">
+        <div className="flex items-center gap-4">
+          <div className="flex gap-1">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="w-2 h-2 rounded-full bg-accent"
+                style={{ opacity: 1 - i * 0.15 }}
+              />
+            ))}
           </div>
           <h1 className="text-2xl font-black text-white tracking-widest">
             S T U D Y
           </h1>
+          <div className="h-px flex-1 bg-gradient-to-r from-accent/40 to-transparent" />
         </div>
       </div>
 

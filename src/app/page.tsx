@@ -10,24 +10,31 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl font-bold text-indigo-300 mt-1">
             Style Sheet
           </h2>
-          <div className="mt-4 text-7xl md:text-9xl font-black text-red-900/30 tracking-tight">
+          <div className="mt-4 text-7xl md:text-9xl font-black text-red-800/50 tracking-tight">
             CSS
           </div>
         </div>
-        {/* "YOU CAN DO IT" text */}
-        <div className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-right opacity-20">
-          {"YOUCANDOIT".split("").map((char, i) => (
-            <div
-              key={i}
-              className="text-4xl md:text-6xl font-black leading-none"
-              style={{ color: `rgb(255, ${220 - i * 15}, ${220 - i * 15})` }}
-            >
-              {char}
-            </div>
-          ))}
+        {/* "YOU CAN DO IT" text - scrolling up animation */}
+        <div className="absolute right-8 md:right-12 top-0 bottom-0 overflow-hidden opacity-20">
+          <div className="animate-scroll-up flex flex-col items-center">
+            {[0, 1].map((repeat) => (
+              <div key={repeat} className="flex flex-col items-center">
+                {"YOUCANDOIT".split("").map((char, i) => (
+                  <div
+                    key={`${repeat}-${i}`}
+                    className="text-4xl md:text-6xl font-black leading-none w-12 md:w-16 text-center"
+                    style={{ color: `rgb(255, ${220 - i * 15}, ${220 - i * 15})` }}
+                  >
+                    {char}
+                  </div>
+                ))}
+                <div className="h-16" />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="mt-6 flex items-center gap-2 text-sm text-slate-400">
-          <span className="font-mono">CSS.EDUHTML.COM</span>
+          <a href="https://web.archive.org/web/20030212122119/http://css.eduhtml.com/" target="_blank" rel="noopener noreferrer" className="font-mono hover:text-indigo-400 transition-colors">CSS.EDUHTML.COM</a>
         </div>
       </section>
 
@@ -65,17 +72,11 @@ export default function Home() {
 
       {/* NEWS section */}
       <section>
-        <div className="relative mb-4">
-          <h3 className="text-2xl font-black text-blue-600">
-            NEWS{" "}
-            <span className="text-blue-500/80">I</span>
-            <span className="text-blue-400/60">I</span>
-            <span className="text-blue-300/40">I</span>
-            <span className="text-blue-200/20">I</span>
+        <div className="mb-4 flex items-center gap-3">
+          <h3 className="text-2xl font-black text-blue-400 drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">
+            NEWS
           </h3>
-          <div className="text-base font-bold text-indigo-200/50 mt-[-4px] ml-1 tracking-widest">
-            N E W S
-          </div>
+          <div className="h-px flex-1 bg-gradient-to-r from-blue-500/40 to-transparent" />
         </div>
 
         <div className="rounded-xl overflow-hidden border border-border">
