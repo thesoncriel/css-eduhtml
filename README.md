@@ -2,7 +2,7 @@
 
 2000년에 만든 CSS 강좌 사이트를 2026년 모던 웹 기술로 리뉴얼한 프로젝트입니다.
 
-> **[css-eduhtml.vercel.app](https://css-eduhtml.vercel.app/)** 에서 확인할 수 있습니다.
+> **[css-eduhtml.vercel.app](https://css-eduhtml.vercel.app/)** | **[css-eduhtml.theson.workers.dev](https://css-eduhtml.theson.workers.dev/)** 에서 확인할 수 있습니다.
 
 | As-Is (2000년) | To-Be (2026년) |
 |---|---|
@@ -14,12 +14,14 @@
 
 2000년 고등학교 1학년 때 만들었던 CSS 강좌 사이트 **css.eduhtml.com**을 현재 모던 웹 표준에 맞추어 재구축한 프로젝트입니다. 원본 사이트는 더 이상 존재하지 않으며, Internet Archive에서 복원한 데이터를 기반으로 제작되었습니다.
 
+본 프로젝트는 [Claude Code](https://claude.ai)를 활용한 **Vibe Coding**으로 진행되었습니다.
+
 ## 기술 스택
 
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: TailwindCSS v4
-- **Deployment**: Vercel
+- **Deployment**: Vercel, Cloudflare Pages
 - **Data**: 정적 JSON/TS 기반 (DB 없음)
 
 ## 페이지 구성 (총 28개 정적 페이지)
