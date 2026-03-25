@@ -36,27 +36,21 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           fixed top-0 left-0 z-50 h-full w-60 bg-[#0c1222] border-r border-border
           flex flex-col
           transition-transform duration-300
-          lg:translate-x-0 lg:static lg:z-auto
+          lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:z-auto
           ${isOpen ? "translate-x-0 animate-slide-in" : "-translate-x-full"}
         `}
       >
         {/* Logo area */}
         <div className="p-6 border-b border-border">
-          <div className="relative">
-            <span className="text-5xl text-accent leading-none">◆</span>
-            <div className="mt-[-8px]">
-              <span className="text-lg font-black text-slate-400 tracking-tight">
-                EduHtml
-              </span>
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              <div className="absolute w-7 h-7 bg-gradient-to-br from-amber-400 to-orange-500 rotate-45 rounded-sm" />
+              <div className="absolute w-3.5 h-3.5 bg-gradient-to-br from-amber-300 to-orange-400 rotate-45 rounded-sm translate-y-[-2px]" />
             </div>
-            <div className="mt-[-4px]">
-              <span className="text-lg font-black text-indigo-400 tracking-tight">
-                EduHtml
-              </span>
+            <div>
+              <div className="text-sm font-bold tracking-widest text-slate-500 uppercase">CSS</div>
+              <div className="text-lg font-black text-indigo-400 tracking-tight leading-none">EduHtml</div>
             </div>
-          </div>
-          <div className="mt-4 border-t border-accent pt-3">
-            <h2 className="text-xl font-bold italic text-indigo-300">Menu</h2>
           </div>
         </div>
 
@@ -93,7 +87,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Footer */}
         <div className="p-4 border-t border-border text-xs text-slate-500">
           <p>Copyleft(C) 2000 The SON</p>
-          <p className="mt-1">css.eduhtml.com</p>
+          <a href="https://web.archive.org/web/20030212122119/http://css.eduhtml.com/" target="_blank" rel="noopener noreferrer" className="mt-1 block hover:text-indigo-400 transition-colors">css.eduhtml.com</a>
         </div>
       </aside>
     </>

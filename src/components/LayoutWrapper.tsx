@@ -49,7 +49,7 @@ export default function LayoutWrapper({
         {/* Footer */}
         <footer className="border-t border-border px-4 py-6 text-center text-xs text-slate-500">
           <p>
-            Copyleft(C) 2000 The SON | Originally created at css.eduhtml.com
+            Copyleft(C) 2000 The SON | Originally created at <a href="https://web.archive.org/web/20030212122119/http://css.eduhtml.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors">css.eduhtml.com</a>
           </p>
           <p className="mt-1">
             Rebuilt in 2026 with Next.js + TailwindCSS

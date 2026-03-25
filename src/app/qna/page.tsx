@@ -1,78 +1,8 @@
-"use client";
-
-import { useState } from "react";
-import { qnaPosts, QnaPost } from "@/data/qna";
-
-function PostDetail({
-  post,
-  onBack,
-}: {
-  post: QnaPost;
-  onBack: () => void;
-}) {
-  const replies = qnaPosts.filter((p) => p.parentId === post.id);
-
-  return (
-    <div className="space-y-4">
-      <button
-        onClick={onBack}
-        className="text-sm text-link hover:text-link-hover transition-colors"
-      >
-        ← 목록으로
-      </button>
-
-      <div className="bg-card rounded-xl border border-border overflow-hidden">
-        <div className="p-5 border-b border-border">
-          <h2 className="text-lg font-bold text-slate-100">{post.title}</h2>
-          <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
-            <span>작성자: {post.author}</span>
-            <span>{post.date}</span>
-            <span>조회: {post.hits}</span>
-          </div>
-        </div>
-        <div className="p-5 text-slate-300 whitespace-pre-line leading-relaxed">
-          {post.content}
-        </div>
-      </div>
-
-      {replies.length > 0 && (
-        <div className="space-y-2 ml-4">
-          <h3 className="text-sm text-slate-500 font-bold">답글</h3>
-          {replies.map((reply) => (
-            <div
-              key={reply.id}
-              className="bg-slate-800/50 rounded-lg border border-border/50 overflow-hidden"
-            >
-              <div className="px-4 py-3 border-b border-border/50">
-                <h4 className="text-sm font-semibold text-indigo-300">
-                  {reply.title}
-                </h4>
-                <div className="flex items-center gap-3 mt-1 text-xs text-slate-500">
-                  <span>{reply.author}</span>
-                  <span>{reply.date}</span>
-                </div>
-              </div>
-              <div className="px-4 py-3 text-sm text-slate-400 whitespace-pre-line">
-                {reply.content}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+import Link from "next/link";
+import { qnaPosts } from "@/data/qna";
 
 export default function QnaPage() {
-  const [selectedPost, setSelectedPost] = useState<QnaPost | null>(null);
-
   const topPosts = qnaPosts.filter((p) => !p.isReply);
-
-  if (selectedPost) {
-    return (
-      <PostDetail post={selectedPost} onBack={() => setSelectedPost(null)} />
-    );
-  }
 
   return (
     <div className="space-y-6">
@@ -104,38 +34,40 @@ export default function QnaPage() {
           </div>
 
           {/* Rows */}
-          {qnaPosts.map((post) => (
-            <div
-              key={post.id}
-              className="contents cursor-pointer hover:bg-slate-800/50 group"
-              onClick={() =>
-                setSelectedPost(post.isReply ? qnaPosts.find(p => p.id === post.parentId) || post : post)
-              }
-            >
-              <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 text-xs">
-                {post.isReply ? "" : post.id}
-              </div>
-              <div className="px-3 py-2.5 border-b border-border/50 truncate">
-                {post.isReply && (
-                  <span className="inline-block w-4 ml-2 mr-1 text-slate-600">
-                    └
+          {qnaPosts.map((post) => {
+            const targetId = post.isReply ? post.parentId : post.id;
+
+            return (
+              <Link
+                key={post.id}
+                href={`/qna/${targetId}`}
+                className="contents cursor-pointer hover:bg-slate-800/50 group"
+              >
+                <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 text-xs">
+                  {post.isReply ? "" : post.id}
+                </div>
+                <div className="px-3 py-2.5 border-b border-border/50 truncate">
+                  {post.isReply && (
+                    <span className="inline-block w-4 ml-2 mr-1 text-slate-600">
+                      └
+                    </span>
+                  )}
+                  <span className="text-link group-hover:text-link-hover transition-colors">
+                    {post.title}
                   </span>
-                )}
-                <span className="text-link group-hover:text-link-hover transition-colors">
-                  {post.title}
-                </span>
-              </div>
-              <div className="px-3 py-2.5 text-center text-slate-500 border-b border-border/50 hidden sm:block text-xs">
-                {post.author}
-              </div>
-              <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 hidden md:block text-xs">
-                {post.date}
-              </div>
-              <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 hidden md:block text-xs">
-                {post.hits}
-              </div>
-            </div>
-          ))}
+                </div>
+                <div className="px-3 py-2.5 text-center text-slate-500 border-b border-border/50 hidden sm:block text-xs">
+                  {post.author}
+                </div>
+                <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 hidden md:block text-xs">
+                  {post.date}
+                </div>
+                <div className="px-3 py-2.5 text-center text-slate-600 border-b border-border/50 hidden md:block text-xs">
+                  {post.hits}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
